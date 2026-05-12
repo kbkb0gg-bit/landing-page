@@ -46,7 +46,7 @@ const Logo = ({ className = "" }: { className?: string }) => (
     </div>
     <div className="flex flex-col -gap-1">
       <span className="text-xl font-black tracking-tighter leading-none">
-        Colab<span className="text-amber-500">on Android</span>
+        Colab<span className="text-amber-500"> on Android</span>
       </span>
       <span className="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-500">Cloud IDE</span>
     </div>
@@ -96,7 +96,7 @@ export default function App() {
 
   const handleDownload = () => {
     // Open the download link
-    window.open("https://github.com/user/colab-desktop/releases/download/v2.4.1/colab-desktop.apk", "_blank");
+    window.open("https://appcreator24.com/app4031207-q658v2", "_blank");
   };
 
   return (
@@ -129,7 +129,7 @@ export default function App() {
               className="bg-amber-500 text-zinc-950 px-8 py-3 rounded-full text-sm font-black flex items-center gap-2 shadow-xl shadow-amber-500/20"
             >
               <Download size={18} strokeWidth={3} />
-              GET APK
+              Download Now
             </motion.button>
           </div>
 
@@ -175,7 +175,7 @@ export default function App() {
                 className="w-full bg-amber-500 text-zinc-950 py-6 rounded-3xl font-black text-2xl flex items-center justify-center gap-4 shadow-2xl"
               >
                 <Download size={28} strokeWidth={3} />
-                Download colab.apk
+                Download Now
               </motion.button>
               <button 
                 className="absolute top-8 right-6 text-zinc-500"
@@ -235,7 +235,7 @@ export default function App() {
                 transition={{ duration: 1, delay: 0.2 }}
                 className="text-2xl md:text-3xl text-zinc-400 mb-14 max-w-xl leading-snug font-medium italic"
               >
-                High-performance Python development on your desktop. Zero setup, infinite power.
+                High-performance Python development on your Android device. Zero setup, infinite power.
               </motion.p>
 
               <motion.div 
@@ -251,7 +251,7 @@ export default function App() {
                   className="w-full sm:w-auto bg-amber-500 text-zinc-950 px-12 py-6 rounded-[2.5rem] font-black text-2xl flex items-center justify-center gap-4 shadow-2xl"
                 >
                   <Download size={32} strokeWidth={4} />
-                  Download APK
+                  Download Now
                 </motion.button>
                 <motion.a 
                   href="#features"
@@ -272,92 +272,82 @@ export default function App() {
               transition={{ duration: 1.2, type: 'spring', bounce: 0.4 }}
               className="flex-1 w-full relative perspective-2000 mt-20 md:mt-0"
             >
-              {/* Mock Desktop UI */}
+              {/* Mock Mobile UI */}
               <motion.div 
-                whileHover={{ rotateY: 3, rotateX: 3, scale: 1.02 }}
-                className="relative w-full aspect-[16/10] md:w-[130%] md:max-w-none md:-right-[15%] bg-zinc-900 rounded-2xl border-[8px] border-zinc-800 shadow-[0_80px_150px_-30px_rgba(0,0,0,0.8)] overflow-hidden ease-out z-20 group"
+                whileHover={{ rotateY: 15, rotateX: 10, scale: 1.02 }}
+                className="relative w-[320px] h-[640px] md:w-[380px] md:h-[760px] bg-zinc-900 rounded-[4rem] border-[12px] border-zinc-800 shadow-[0_80px_150px_-30px_rgba(0,0,0,0.8)] overflow-hidden p-2 ease-out cursor-ns-resize mx-auto"
               >
-                <div className="h-full w-full bg-zinc-950 rounded-xl overflow-hidden flex flex-col relative">
-                  {/* Window Header */}
-                  <div className="h-10 bg-zinc-900 border-b border-zinc-800 flex items-center px-4 gap-4 shrink-0">
-                    <div className="flex gap-2">
-                       <div className="w-3 h-3 rounded-full bg-rose-500" />
-                       <div className="w-3 h-3 rounded-full bg-amber-500" />
-                       <div className="w-3 h-3 rounded-full bg-green-500" />
-                    </div>
-                    <div className="flex-1 flex justify-center">
-                       <div className="bg-zinc-800/80 rounded flex items-center gap-2 px-3 py-1 shadow-inner">
-                          <Code2 size={12} className="text-zinc-500" />
-                          <span className="text-[10px] font-bold text-zinc-400">Core_Engine.py - Colab Desktop</span>
-                       </div>
+                <div className="h-full w-full bg-zinc-950 rounded-[3.5rem] overflow-hidden flex flex-col relative">
+                  {/* Phone Header */}
+                  <div className="pt-12 px-8 flex items-center justify-between">
+                    <span className="font-black text-base text-zinc-300">9:41</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-3 rounded-[4px] bg-zinc-800" />
+                      <div className="w-6 h-3 rounded-[4px] bg-amber-500 animate-pulse" />
                     </div>
                   </div>
 
                   {/* App Content */}
-                  <div className="flex-1 overflow-hidden flex bg-zinc-950">
-                    {/* Sidebar */}
-                    <div className="w-48 hidden md:flex flex-col border-r border-zinc-800/50 bg-zinc-900/30">
-                       <div className="h-8 flex items-center px-4 border-b border-zinc-800/50 text-[10px] font-black uppercase text-zinc-500 tracking-widest shrink-0">
-                          Explorer
-                       </div>
-                       <div className="p-4 space-y-3 flex-1 overflow-y-auto">
-                          <p className="text-xs text-amber-500 font-bold flex items-center gap-2 bg-amber-500/10 -mx-2 px-2 py-1 rounded"><Box size={12}/> app.py</p>
-                          <p className="text-xs text-zinc-500 font-bold flex items-center gap-2"><Box size={12}/> model.json</p>
-                          <p className="text-xs text-zinc-500 font-bold flex items-center gap-2"><Box size={12}/> utils.py</p>
-                       </div>
+                  <div className="flex-1 px-6 pt-10 overflow-hidden">
+                    <div className="flex items-center gap-4 mb-8">
+                      <motion.div 
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+                        className="p-3 bg-amber-500 rounded-2xl shadow-xl shadow-amber-500/30"
+                      >
+                        <Terminal size={24} className="text-zinc-950" strokeWidth={3} />
+                      </motion.div>
+                      <div>
+                        <p className="text-sm font-black text-zinc-100 italic">Core_Engine.py</p>
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                          <p className="text-[11px] text-zinc-500 font-black uppercase tracking-widest">A100 GPU: CONNECTED</p>
+                        </div>
+                      </div>
                     </div>
-                    {/* Main Editor */}
-                    <div className="flex-1 flex flex-col p-6 overflow-y-auto">
-                      <div className="flex items-center gap-4 mb-6 shrink-0">
+
+                    <div className="bg-zinc-900/60 rounded-[2rem] p-6 font-mono text-[11px] border border-white/5 mb-8 backdrop-blur-md shadow-2xl">
+                      <p className="text-zinc-600 mb-2">{"In [1]:"}</p>
+                      <p className="text-amber-500 font-black">import <span className="text-white">torch</span></p>
+                      <p className="text-amber-500 font-black">model = <span className="text-white italic">torch.hub.load(...)</span></p>
+                      <p className="mt-4 text-zinc-600 mb-2">{"In [2]:"}</p>
+                      <p className="text-zinc-200">device = <span className="text-blue-400 font-black">"cuda"</span> if <span className="text-amber-400">torch.cuda.is_available()</span> else <span className="text-blue-400">"cpu"</span></p>
+                      <p className="text-zinc-400 mt-2"># Ready to train on cluster</p>
+                    </div>
+
+                    <div className="bg-zinc-900 border border-white/5 rounded-[2rem] p-6 shadow-inner">
+                      <div className="flex justify-between items-center mb-4">
+                        <p className="text-xs font-black uppercase tracking-[0.2em] text-zinc-500">Backprop Stage</p>
+                        <p className="text-xs text-amber-500 font-black">99.1% Opt</p>
+                      </div>
+                      <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
                         <motion.div 
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-                          className="p-2 bg-amber-500 rounded-lg shadow-lg shadow-amber-500/20"
-                        >
-                          <Terminal size={18} className="text-zinc-950" strokeWidth={3} />
-                        </motion.div>
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-                            <p className="text-[10px] text-zinc-500 font-black uppercase tracking-widest">A100 GPU: CONNECTED</p>
-                          </div>
-                        </div>
+                          animate={{ width: ['0%', '99.1%'] }}
+                          transition={{ duration: 4, repeat: Infinity, repeatDelay: 1 }}
+                          className="h-full bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-[length:200%_auto] animate-gradient" 
+                        />
                       </div>
-
-                      <div className="bg-zinc-900/60 rounded-xl p-6 font-mono text-xs border border-white/5 mb-6 backdrop-blur-md shadow-2xl flex-1 flex flex-col shrink-0">
-                        <div className="flex gap-4">
-                           <div className="text-zinc-600 outline-none text-right select-none space-y-1 w-6">
-                             <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p>
-                           </div>
-                           <div className="space-y-1 overflow-x-auto pb-2">
-                             <p><span className="text-blue-400">import</span> <span className="text-white">torch</span></p>
-                             <p><span className="text-white">model</span> = <span className="text-amber-400 italic">torch.hub.load(...)</span></p>
-                             <p className="text-zinc-500"># Next iteration setup</p>
-                             <p className="whitespace-nowrap"><span className="text-white">device</span> = <span className="text-green-400">"cuda"</span> <span className="text-blue-400">if</span> <span className="text-amber-400">torch.cuda.is_available()</span> <span className="text-blue-400">else</span> <span className="text-green-400">"cpu"</span></p>
-                             <p className="text-zinc-500 mt-2"># Ready to train on cluster</p>
-                           </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-zinc-900 border border-white/5 rounded-xl p-5 shadow-inner shrink-0">
-                        <div className="flex justify-between items-center mb-3">
-                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">Backprop Stage</p>
-                          <p className="text-[10px] text-amber-500 font-black">99.1% Opt</p>
-                        </div>
-                        <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
-                          <motion.div 
-                            animate={{ width: ['0%', '99.1%'] }}
-                            transition={{ duration: 4, repeat: Infinity, repeatDelay: 1 }}
-                            className="h-full bg-gradient-to-r from-amber-400 via-orange-500 to-amber-500 bg-[length:200%_auto] animate-gradient" 
-                          />
-                        </div>
+                      <div className="mt-6 flex gap-3">
+                         <div className="flex-1 h-16 bg-zinc-800/20 rounded-2xl border border-white/5 animate-pulse" />
+                         <div className="flex-1 h-16 bg-zinc-800/20 rounded-2xl border border-white/5 animate-pulse delay-150" />
                       </div>
                     </div>
+                  </div>
+
+                  {/* Floating Action Button */}
+                  <div className="absolute bottom-10 right-10">
+                    <motion.div 
+                      whileHover={{ scale: 1.15, rotate: 15 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-16 h-16 bg-amber-500 rounded-3xl shadow-[0_20px_40px_rgba(245,158,11,0.4)] flex items-center justify-center cursor-pointer"
+                    >
+                      <Share2 size={32} className="text-zinc-950" strokeWidth={4} />
+                    </motion.div>
                   </div>
                 </div>
 
                 {/* Reflection effect */}
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 via-transparent to-black/30 pointer-events-none rounded-2xl group-hover:opacity-50 transition-opacity" />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 via-transparent to-black/30 pointer-events-none rounded-[4rem] group-hover:opacity-50 transition-opacity" />
               </motion.div>
 
               {/* Backglow for the window */}
@@ -399,7 +389,7 @@ export default function App() {
             className="text-center mb-32"
           >
             <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter italic">Pro Performance.</h2>
-            <p className="text-amber-500 font-black uppercase tracking-[0.4em] text-sm mb-8">Architected for Desktop</p>
+            <p className="text-amber-500 font-black uppercase tracking-[0.4em] text-sm mb-8">Architected for Android</p>
             <div className="h-2 w-32 bg-gradient-to-r from-amber-500 via-orange-600 to-amber-500 mx-auto rounded-full shadow-[0_0_20px_rgba(245,158,11,0.5)]" />
           </motion.div>
 
@@ -565,7 +555,7 @@ export default function App() {
                   viewport={{ once: true, amount: 0.3 }}
                   className="text-2xl md:text-4xl text-zinc-500 font-bold mb-20 leading-tight max-w-4xl mx-auto"
                 >
-                  Don't let your compute sit idle. Take your research anywhere with the official Colab Desktop build.
+                  Don't let your compute sit idle. Take your research anywhere with the official Colab on Android build.
                 </motion.p>
                 
                 <div className="flex flex-col md:flex-row gap-8 justify-center w-full max-w-3xl mx-auto">
