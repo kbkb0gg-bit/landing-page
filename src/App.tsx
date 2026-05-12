@@ -46,7 +46,7 @@ const Logo = ({ className = "" }: { className?: string }) => (
     </div>
     <div className="flex flex-col -gap-1">
       <span className="text-xl font-black tracking-tighter leading-none">
-        Colab<span className="text-amber-500">Desktop</span>
+        Colab<span className="text-amber-500">on Android</span>
       </span>
       <span className="text-[8px] font-black uppercase tracking-[0.3em] text-zinc-500">Cloud IDE</span>
     </div>
@@ -622,7 +622,7 @@ export default function App() {
         </div>
         <div className="max-w-7xl mx-auto px-6 mt-40 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12">
             <p className="text-zinc-700 text-[10px] font-black tracking-[0.8em] uppercase text-center md:text-left">
-              © 2026 Colab Desktop. Built for the future of dev.
+              © 2026 Colab on Android. Built for the future of dev.
             </p>
           <div className="flex gap-12 items-center">
             {['TW', 'GH', 'DC'].map(social => (
