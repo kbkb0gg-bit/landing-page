@@ -1,0 +1,6 @@
+{
+  "name": "Colab Mobile",
+  "description": "A high-performance landing page for the Google Colab mobile application, enabling on-the-go Python development with cloud-accelerated computing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
