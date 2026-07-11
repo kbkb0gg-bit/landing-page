@@ -1,0 +1,55 @@
+name: RDP-ngrok
+
+on:
+  workflow_dispatch:
+
+jobs:
+  secure-rdp:
+    runs-on: windows-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Configure RDP
+        run: |
+          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
+          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 0
+          netsh advfirewall firewall add rule name="Open-RDP" dir=in action=allow protocol=TCP localport=3389
+          Restart-Service TermService -Force
+
+      - name: Create RDP User
+        run: |
+          $pass = -join ((48..57)+(65..90)+(97..122) | Get-Random -Count 16 | % {[char]$_})
+          $securePass = ConvertTo-SecureString $pass -AsPlainText -Force
+          New-LocalUser "RDP" -Password $securePass
+          Add-LocalGroupMember -Group "Administrators" -Member "RDP"
+          Add-LocalGroupMember -Group "Remote Desktop Users" -Member "RDP"
+          echo "RDP_PASSWORD=$pass" >> $env:GITHUB_ENV
+
+      - name: Install ngrok
+        run: |
+          Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
+          Expand-Archive ngrok.zip -DestinationPath C:\ngrok
+          [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\ngrok", [EnvironmentVariableTarget]::Machine)
+
+      - name: Start ngrok Tunnel
+        run: |
+          ngrok config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
+          Start-Process ngrok -ArgumentList "tcp 3389" -WindowStyle Hidden
+          Start-Sleep 15
+
+      - name: Get Public Address
+        id: ngrok
+        run: |
+          $tunnels = (Invoke-RestMethod http://localhost:4040/api/tunnels).tunnels
+          $addr = ($tunnels | Where-Object {$_.proto -eq "tcp"}).public_url -replace "tcp://",""
+          echo "RDP_ADDRESS=$addr" >> $env:GITHUB_ENV
+          echo "Address: $addr"
+
+      - name: Keep Alive
+        run: |
+          Write-Host "`n=== RDP INFO ==="
+          Write-Host "Address: $env:RDP_ADDRESS"
+          Write-Host "User: RDP"
+          Write-Host "Pass: $env:RDP_PASSWORD"
+          Write-Host "================"
+          while($true){ Start-Sleep 60 }
