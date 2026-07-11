@@ -18,32 +18,30 @@ jobs:
 
       - name: Create RDP User
         run: |
-          $pass = -join ((48..57)+(65..90)+(97..122) | Get-Random -Count 16 | % {[char]$_})
+          $pass = -join ((33..126) | Get-Random -Count 16 | % {[char]$_})
           $securePass = ConvertTo-SecureString $pass -AsPlainText -Force
           New-LocalUser "RDP" -Password $securePass
           Add-LocalGroupMember -Group "Administrators" -Member "RDP"
           Add-LocalGroupMember -Group "Remote Desktop Users" -Member "RDP"
           echo "RDP_PASSWORD=$pass" >> $env:GITHUB_ENV
 
-      - name: Install ngrok
+      - name: Download ngrok
         run: |
-          Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile ngrok.zip
-          Expand-Archive ngrok.zip -DestinationPath C:\ngrok
-          [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\ngrok", [EnvironmentVariableTarget]::Machine)
+          Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip -OutFile $env:TEMP\ngrok.zip
+          Expand-Archive $env:TEMP\ngrok.zip -DestinationPath C:\ngrok
 
       - name: Start ngrok Tunnel
         run: |
-          ngrok config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
-          Start-Process ngrok -ArgumentList "tcp 3389" -WindowStyle Hidden
+          C:\ngrok\ngrok.exe config add-authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
+          Start-Process C:\ngrok\ngrok.exe -ArgumentList "tcp 3389" -WindowStyle Hidden
           Start-Sleep 15
 
       - name: Get Public Address
-        id: ngrok
         run: |
           $tunnels = (Invoke-RestMethod http://localhost:4040/api/tunnels).tunnels
           $addr = ($tunnels | Where-Object {$_.proto -eq "tcp"}).public_url -replace "tcp://",""
           echo "RDP_ADDRESS=$addr" >> $env:GITHUB_ENV
-          echo "Address: $addr"
+          Write-Host "RDP Address: $addr"
 
       - name: Keep Alive
         run: |
